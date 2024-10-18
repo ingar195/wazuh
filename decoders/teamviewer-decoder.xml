@@ -1,0 +1,25 @@
+<!--
+2024/02/13 16:09:10.967  1234       6784 S0   AuthenticationBlocker::Allocate: allocate ok for DyngateID 1234511111, attempt number 1
+2024/02/13 16:09:14.104 123456      45120 D1   AuthenticationPasswordLogin_Passive::RunAuthenticationMethod: authentication using dynamic password was denied
+-->
+
+<decoder name="tv-failed-logon-decoder">
+    <prematch>AuthenticationBlocker::Allocate: allocate ok for DyngateID</prematch>
+</decoder>
+<decoder name="tv-failed-logon-id-decoder">
+    <parent>tv-failed-logon-decoder</parent>
+    <regex>allocate ok for DyngateID (\d+)</regex>
+    <order>remote_id</order>
+</decoder>
+
+
+<!-- get id for successfull login -->
+<!-- PersistentParticipantManager::AddParticipant: [123456789,-123456789] type=3 name=Some Name -->
+<decoder name="tv-authentication-get-name">
+    <prematch>PersistentParticipantManager::AddParticipant:</prematch>
+</decoder>
+<decoder name="tv-authentication-get-id-decoder">
+    <parent>tv-authentication-get-name</parent>
+    <regex>(\d+),\.+name=(\.+)</regex>
+    <order>remote_id,remote_name</order>
+</decoder>

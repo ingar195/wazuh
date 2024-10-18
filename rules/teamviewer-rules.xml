@@ -1,0 +1,14 @@
+<group name="teamviewer,">
+
+    <rule id="100201" level="2" ignore="5">
+        <decoded_as>tv-authentication-get-name</decoded_as>
+        <description>TV: Connection from ID: $(remote_id), Name: $(remote_name)</description>
+        <!--<if_matched_sid>100201</if_matched_sid>-->
+    </rule>
+
+    <rule id="100202" level="12" ignore="5">
+        <decoded_as>tv-failed-logon-decoder</decoded_as>
+        <description>TV: Failed login attempt from $(remote_id)</description>
+    </rule>
+
+</group>
