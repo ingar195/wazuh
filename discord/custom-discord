@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/env python3 /var/ossec/integrations/custom-discord.py "$1" "$2" "$3" "$4" "$5"
