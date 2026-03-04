@@ -1,0 +1,47 @@
+<!-- https://regex101.com/r/12C7V6/1 -->
+
+<decoder name="unifi_event">
+  <prematch type="pcre2">^CEF:\d+\|Ubiquiti</prematch>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">Ubiquiti\|UniFi Network|\d+.\|(\d+)\|(.*)\|\d</regex>
+    <order>event_id,event_title</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIcategory=(\w+)\s</regex>
+    <order>category</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIhost=(.*)\sUNIFIsettingsChanges</regex>
+    <order>unifi_host</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIsettingsSection=(.*) UNIFIsettingsEntry</regex>
+    <order>setting_type</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">Source IP: (\d+.\d+.\d+.\d+)</regex>
+    <order>src_ip</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIadmin=(.*) cnt</regex>
+    <order>admin_name</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">msg=(.*)</regex>
+    <order>event_msg</order>
+</decoder>
