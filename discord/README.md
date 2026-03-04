@@ -6,7 +6,8 @@
 1. Enter the wazuh.manager
 2. cd /var/ossec/integrations
 3. Add the 2 files from this folder
-4. Run the commands
+4. Update the IP to your 
+5. Run the commands
 ``` bash
 chmod 750 /var/ossec/integrations/custom-discord*
 chown root:wazuh /var/ossec/integrations/custom-discord*
