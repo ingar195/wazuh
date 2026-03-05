@@ -1,7 +1,7 @@
 <!-- https://regex101.com/r/12C7V6/1 -->
 
 <decoder name="unifi_event">
-  <prematch type="pcre2">^CEF:\d+\|Ubiquiti</prematch>
+  <prematch type="pcre2">CEF:\d+\|Ubiquiti</prematch>
 </decoder>
 
 <decoder name="unifi_event_type">
@@ -34,11 +34,11 @@
     <order>src_ip</order>
 </decoder>
 
-<decoder name="unifi_event_type">
+<!-- <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
     <regex offset="after_parent" type="pcre2">UNIFIadmin=(.*) cnt</regex>
     <order>admin_name</order>
-</decoder>
+</decoder> -->
 
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
