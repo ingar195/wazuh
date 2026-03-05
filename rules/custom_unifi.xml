@@ -9,7 +9,7 @@
     -->
 
     <rule id="222301" level="16">
-        <decoded_as>unifi_event_type</decoded_as>
+        <decoded_as>unifi_event</decoded_as>
         <!-- <field name="event_id" type="pcre2">^(545|549)$</field> -->
         <field name="setting_type">Port forwarding</field>
         <description>$(event_msg)</description>
@@ -25,7 +25,7 @@
     -->
 
     <rule id="222311" level="12">
-        <decoded_as>unifi_event_type</decoded_as>
+        <decoded_as>unifi_event</decoded_as>
         <!-- <field name="event_id" type="pcre2">^(545|547|548|549)$</field> -->
         <field name="setting_type" type="pcre2">Firewall Policy</field>
         <description>$(event_msg)</description>
@@ -34,7 +34,7 @@
     <!-- Medium Severity Events -->
     <!-- Admin Logon -->
     <rule id="222341" level="8">
-        <decoded_as>unifi_event_type</decoded_as>
+        <decoded_as>unifi_event</decoded_as>
         <field name="event_id" type="pcre2">544</field>
         <description>$(event_msg)</description>
     </rule>
@@ -50,7 +50,7 @@
         404 disconnect
     -->
     <rule id="222361" level="8">
-        <decoded_as>unifi_event_type</decoded_as>
+        <decoded_as>unifi_event</decoded_as>
         <field name="event_id" type="pcre2">^(400|401|402|403|404)$</field>
         <description>$(event_msg)</description>
     </rule>
@@ -58,12 +58,12 @@
     <!-- Low Severity Events -->
     <!-- Catch all with some info -->
     <rule id="222371" level="3" ignore="5">
-        <decoded_as>unifi_event_type</decoded_as>
+        <decoded_as>unifi_event</decoded_as>
         <description>unifi unknown event $(event_type)</description>
     </rule>
     <!-- Catch all -->
     <rule id="222399" level="3" ignore="5">
-        <decoded_as>unifi_event_type</decoded_as>
+        <decoded_as>unifi_event</decoded_as>
         <description>unifi event $(event_msg)</description>
     </rule>
     
