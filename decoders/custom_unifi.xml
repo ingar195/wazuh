@@ -1,39 +1,47 @@
 <decoder name="unifi_event">
-  <prematch type="pcre2">CEF:\d+\|Ubiquiti</prematch>
+    <program_name>^CEF</program_name>
+    <prematch type="pcre2">\|Ubiquiti\|UniFi Network\|</prematch>
+</decoder>
+
+<decoder name="unifi_event">
+    <prematch type="pcre2">CEF:\d+\|Ubiquiti\|UniFi Network\|</prematch>
+</decoder>
+
+
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">^([\d\.]+)\|(\d+)\|(.*?)\|</regex>
+    <order>unifi_version, unifi_event_id, unifi_event_title</order>
 </decoder>
 
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
-    <regex offset="after_parent" type="pcre2">\|UniFi Network\|[\d\.]+\|(\d+)\|(.*?)\|</regex>
-    <order>event_id,event_title</order>
+    <regex offset="after_parent" type="pcre2">UNIFIcategory=(\w+)</regex>
+    <order>unifi_category</order>
 </decoder>
 
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
-    <regex offset="after_parent" type="pcre2">UNIFIcategory=(\w+)\s</regex>
-    <order>category</order>
+    <regex offset="after_parent" type="pcre2">UNIFIhost=(.*?)\s+UNIFI</regex>
+    <order>unifi_unifi_host</order>
 </decoder>
 
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
-    <regex offset="after_parent" type="pcre2">UNIFIhost=(.*?)\sUNIFI</regex>
-    <order>unifi_host</order>
+    <regex offset="after_parent" type="pcre2">UNIFIsettingsSection=(.*?)\s+UNIFIsettingsEntry</regex>
+    <order>unifi_setting_type</order>
 </decoder>
 
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
-    <regex offset="after_parent" type="pcre2">UNIFIsettingsSection=(.*?)\sUNIFIsettingsEntry</regex>
-    <order>setting_type</order>
+    <regex offset="after_parent" type="pcre2">src=(\d+\.\d+\.\d+\.\d+)</regex>
+    <order>srcip</order>
 </decoder>
+
 
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
-    <regex offset="after_parent" type="pcre2">Source IP: (\d+\.\d+\.\d+\.\d+)</regex>
-    <order>src_ip</order>
-</decoder>
-
-<decoder name="unifi_event_type">
-    <parent>unifi_event</parent>
-    <regex offset="after_parent" type="pcre2">msg=(.*)</regex>
-    <order>event_msg</order>
+    <regex offset="after_parent" type="pcre2">msg=(.*)$</regex>
+    <order>unifi_event_msg</order>
 </decoder>

@@ -1,80 +1,34 @@
 <group name="unifi,">
 
-    <!-- High Severity Events -->
-    <!-- 
-        Port forward
-        545 Created
-        549 Removed
-        + setting_type Port forwarding
-    -->
-
-    <rule id="222301" level="16">
+    <rule id="222300" level="3">
         <decoded_as>unifi_event</decoded_as>
-        <!-- <field name="event_id" type="pcre2">^(545|549)$</field> -->
-        <field name="setting_type">Port forwarding</field>
-        <description>$(event_msg)</description>
-    </rule>
-
-    <!-- 
-        Firewall Changes
-        545 Created
-        547 Pause
-        548 Resume
-        549 Removed
-        + UNIFIsettingsSection=Firewall Policy
-    -->
-
-    <rule id="222311" level="12">
-        <decoded_as>unifi_event</decoded_as>
-        <!-- <field name="event_id" type="pcre2">^(545|547|548|549)$</field> -->
-        <field name="setting_type" type="pcre2">Firewall Policy</field>
-        <description>$(event_msg)</description>
-    </rule>
-
-    <!-- Medium Severity Events -->
-    <!-- Admin Logon -->
-    <rule id="222341" level="8">
-        <decoded_as>unifi_event</decoded_as>
-        <field name="event_id" type="pcre2">544</field>
-        <description>$(event_msg)</description>
-    </rule>
-
-    <!-- 
-        WIFI
-        400 connect
-        401 disconnect
-        402 Roamed 
-        
-        Cabled
-        403 connect ? 
-        404 disconnect
-    -->
-    <rule id="222361" level="8">
-        <decoded_as>unifi_event</decoded_as>
-        <field name="event_id" type="pcre2">^(400|401|402|403|404)$</field>
-        <description>$(event_msg)</description>
-    </rule>
-
-    <!-- Low Severity Events -->
-    <!-- Catch all with some info -->
-    <rule id="222371" level="3" ignore="5">
-        <decoded_as>unifi_event</decoded_as>
-        <description>unifi unknown event $(event_type)</description>
-    </rule>
-    <!-- Catch all -->
-    <rule id="222399" level="3" ignore="5">
-        <decoded_as>unifi_event</decoded_as>
-        <description>unifi event $(event_msg)</description>
+        <description>UniFi Event: $(unifi_event_title) - $(unifi_event_msg)</description>
     </rule>
     
-</group>
+    <rule id="222301" level="16">
+        <if_sid>222300</if_sid>
+        <field name="unifi_event_id" type="pcre2">^(545|549)$</field>
+        <field name="unifi_setting_type" type="pcre2">^Port forwarding$</field>
+        <description>UniFi Port Forwarding Changed: $(unifi_event_msg)</description>
+    </rule>
 
-<!-- 	
-    name: 'unifi_event'
-	category: 'Audit'
-	event_id: '547'
-	event_msg: 'Ingar Frostad paused Allow all to Wazuh Firewall Policy. Source IP: 10.6.0.11'
-	event_title: 'Admin Paused Config'
-	setting_type: 'Firewall Policy'
-	src_ip: '10.6.0.11'
-	unifi_host: 'Heime UDM' -->
+    <rule id="222311" level="12">
+        <if_sid>222300</if_sid>
+        <field name="unifi_event_id" type="pcre2">^(545|547|548|549)$</field>
+        <field name="unifi_setting_type" type="pcre2">^Firewall Policy$</field>
+        <description>UniFi Firewall Policy Changed: $(unifi_event_msg)</description>
+    </rule>
+
+    <rule id="222341" level="8">
+        <if_sid>222300</if_sid>
+        <field name="unifi_event_id" type="pcre2">^544$</field>
+        <description>UniFi Admin Access: $(unifi_event_msg)</description>
+    </rule>
+
+    <rule id="222361" level="2">
+        <if_sid>222300</if_sid>
+        <field name="unifi_event_id" type="pcre2">^(400|401|402|403|404)$</field>
+        <description>UniFi Device Connection: $(unifi_event_msg)</description>
+    </rule>
+
+</group>
