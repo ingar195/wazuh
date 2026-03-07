@@ -1,4 +1,4 @@
 #!/bin/sh
-dnf install pip -y
+/usr/bin/dnf install pip -y
 /usr/bin/env python3 -m pip install requests
 /usr/bin/env python3 /var/ossec/integrations/custom-discord.py "$1" "$2" "$3" "$4" "$5"
