@@ -44,10 +44,3 @@
 ```
 * Now save and restart
 * Then check the log `tail -f /var/ossec/logs/archives/archives.log`
-    * You should see something like this (this is from a wifi ap)
-    ```
-        2024 Oct 18 19:36:28 WIFI_AP_NAME->192.168.x.xx Oct 18 21:36:28 WIFI_AP_NAME xxxxxxxxxxxxx,WIFI_AP_NAME-6.6.78+15404: mcad: mcad[9776]: wireless_agg_stats.log_sta_anomalies(): bssid=XX:XX:XX:XX:XX:XX radio=rai0 vap=rai1 sta=XX:XX:XX:XX:XX:XX satisfaction_now=72 anomalies=wifi_retries
-        
-        2024 Oct 18 19:36:29 WIFI_AP_NAME->192.168.x.xx Oct 18 21:36:29 WIFI_AP_NAME xxxxxxxxxxxxx,WIFI_AP_NAME-6.6.78+15404: stahtd: stahtd[3701]: [STA-TRACKER].stahtd_dump_event(): {"message_type":"STA_ASSOC_TRACKER","mac":"XX:XX:XX:XX:XX:XX","vap":"ra1","event_type":"soft failure","assoc_status":"0","ip_assign_type":"roamed","wpa_auth_delta":"72000","assoc_delta":"56000","auth_delta":"0","event_id":"247","auth_ts":"2054102.769340","sta_dc_reason":"sta left","disassoc_reason":"8"}
-    ```
-* If you are not seeing this, double check all the steps from [How to setup Unifi syslog](#how-to-setup-unifi-syslog)

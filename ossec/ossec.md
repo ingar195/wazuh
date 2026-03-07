@@ -1,6 +1,5 @@
 # ossec configs 
-
-Here you have the ossec configs i use
+Here you have the ossec configs i use for the different things
 
 Groups: 
 * Default

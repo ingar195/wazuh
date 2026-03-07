@@ -1,0 +1,7 @@
+  <agent_config>
+    <!-- Shared agent configuration here -->
+    <localfile>
+      <location>/opt/docker/*/data/logs/*.log</location>
+      <log_format>syslog</log_format>
+    </localfile>
+  </agent_config>

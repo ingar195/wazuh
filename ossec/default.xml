@@ -1,0 +1,7 @@
+  <agent_config>
+    <vulnerability-detection>
+      <enabled>yes</enabled>
+      <index-status>yes</index-status>
+      <feed-update-interval>60m</feed-update-interval>
+    </vulnerability-detection>
+  </agent_config>
