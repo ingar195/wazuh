@@ -1,0 +1,7 @@
+<group name="syslog,sudo,">
+  <rule id="222555" level="0">
+    <if_sid>5402, 5403</if_sid>
+    <field name="command" type="pcre2">usbip</field>
+    <description>Suppress any sudo command containing usbip</description>
+  </rule>
+</group>

@@ -5,8 +5,8 @@
     <name>custom-discord</name>
     <hook_url></hook_url>
     <alert_format>json</alert_format>
-    <level>12</level>
-   <!-- Wazuh API & System Critical Errors -->
+    <!-- <level>12</level> -->
+    <!-- Wazuh API & System Critical Errors -->
     <rule_id>404,518,519,521,593</rule_id>
     <!--
       404 Wazuh API: Critical Error event, requires immediate attention.
@@ -102,19 +102,23 @@
       62108 Windows Defender: Real-time protection enabled.
       -->
 
-
+    <!-- Parsec -->
+    <rule_id>223121</rule_id>  
+    
     <!-- TeamViewer -->
-    <rule_id>100202</rule_id>
+    <rule_id>223101,223102</rule_id>
     <!--
-      100201 Successful Teamviewer login
-      100202 Failed Teamviewer login
+      223101 Successful Teamviewer login
+      223102 Failed Teamviewer login
     -->
     
     <!-- Unifi -->
     <!-- THIS IS IN DEVELOPMENT-->
-    <rule_id>100060</rule_id> 
-    
- 
-
+    <rule_id>222301,222311,222312</rule_id> 
+    <!--
+      222301 Portforward changed
+      222311 FW rule changed
+      222312 Devices offline
+    -->
   </integration>
 ```

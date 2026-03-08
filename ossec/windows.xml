@@ -1,22 +1,22 @@
-  <agent_config>
-    <localfile>
-      <location>C:\Program Files (x86)\TeamViewer\TeamViewer15_Logfile.log</location>
-      <log_format>syslog</log_format>
-    </localfile>
-    <localfile>
-      <location>%programdata%\Parsec\log.txt</location>
-      <log_format>syslog</log_format>
-    </localfile>
-    <localfile>
-      <location>%appdata%\Parsec\log.txt</location>
-      <log_format>syslog</log_format>
-    </localfile>
-    <localfile>
-      <location>Microsoft-Windows-Windows Defender/Operational</location>
-      <log_format>eventchannel</log_format>
-    </localfile>
-    <localfile>
-      <location>Microsoft-Windows-Sysmon/Operational</location>
-      <log_format>eventchannel</log_format>
-    </localfile>
-  </agent_config>
+<agent_config>
+  <localfile>
+    <location>C:\Program Files (x86)\TeamViewer\TeamViewer15_Logfile.log</location>
+    <log_format>syslog</log_format>
+  </localfile>
+  <localfile>
+    <location>%programdata%\Parsec\log.txt</location>
+    <log_format>syslog</log_format>
+  </localfile>
+  <localfile>
+    <location>%appdata%\Parsec\log.txt</location>
+    <log_format>syslog</log_format>
+  </localfile>
+  <localfile>
+    <location>Microsoft-Windows-Windows Defender/Operational</location>
+    <log_format>eventchannel</log_format>
+  </localfile>
+  <localfile>
+    <location>Microsoft-Windows-Sysmon/Operational</location>
+    <log_format>eventchannel</log_format>
+  </localfile>
+</agent_config>

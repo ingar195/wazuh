@@ -8,8 +8,3 @@ This is a repo were i collect all my custom changes to wazuh, im ruining Wazuh i
 
 
 I also use the repo [SOCFortress Rules](https://github.com/socfortress/Wazuh-Rules)
-
-
-## Planed
-* Fix TeamViewer rules
-* Add support for parsec
