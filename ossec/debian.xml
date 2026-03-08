@@ -1,7 +1,9 @@
-  <agent_config>
-    <!-- Shared agent configuration here -->
+<agent_config>
     <localfile>
       <location>/opt/docker/*/data/logs/*.log</location>
       <log_format>syslog</log_format>
     </localfile>
-  </agent_config>
+    <syscheck>
+        <directories report_changes="yes" whodata="yes">/etc/ufw/</directories>
+    </syscheck>
+</agent_config>
