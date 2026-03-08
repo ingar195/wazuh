@@ -7,7 +7,7 @@
     
     <rule id="222301" level="16">
         <if_sid>222300</if_sid>
-        <field name="unifi_event_id" type="pcre2">^(545|549)$</field>
+        <field name="unifi_event_id" type="pcre2">^(545|547|548|549)$</field>
         <field name="unifi_setting_type" type="pcre2">^Port forwarding$</field>
         <description>UniFi Port Forwarding Changed: $(unifi_event_msg)</description>
     </rule>
@@ -19,10 +19,29 @@
         <description>UniFi Firewall Policy Changed: $(unifi_event_msg)</description>
     </rule>
 
+    <rule id="222312" level="12">
+        <if_sid>222300</if_sid>
+        <field name="unifi_event_id" type="pcre2">^(515)$</field>
+        <description>UniFi Devices Offline: $(unifi_device_list)</description>
+    </rule>
+
     <rule id="222341" level="8">
         <if_sid>222300</if_sid>
         <field name="unifi_event_id" type="pcre2">^544$</field>
         <description>UniFi Admin Access: $(unifi_event_msg)</description>
+    </rule>
+
+    <rule id="222345" level="4">
+        <if_sid>222300</if_sid>
+        <field name="unifi_fixedip" type="pcre2">true</field>
+        <description>UniFi Fixed IP assigned ($(unifi_settings_name)) $(unifi_fixedip_ip) to </description>
+    </rule>
+
+    <rule id="222351" level="3">
+        <if_sid>222300</if_sid>
+        <field name="unifi_updated_application_version" type="pcre2">^(.*?)$</field>
+        <field name="unifi_prior_application_version" type="pcre2">^(.*?)$</field>
+        <description>UniFi Updated from $(unifi_prior_application_version) to $(unifi_updated_application_version)</description>
     </rule>
 
     <rule id="222361" level="2">

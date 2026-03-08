@@ -7,8 +7,6 @@
     <prematch type="pcre2">CEF:\d+\|Ubiquiti\|UniFi Network\|</prematch>
 </decoder>
 
-
-
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
     <regex offset="after_parent" type="pcre2">^([\d\.]+)\|(\d+)\|(.*?)\|</regex>
@@ -39,9 +37,51 @@
     <order>srcip</order>
 </decoder>
 
-
 <decoder name="unifi_event_type">
     <parent>unifi_event</parent>
     <regex offset="after_parent" type="pcre2">msg=(.*)$</regex>
     <order>unifi_event_msg</order>
+</decoder>
+
+<!-- Get Admin name -->
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIadmin=(.*?)\scnt</regex>
+    <order>unifi_admin</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">use_fixedip:\s(\w+);</regex>
+    <order>unifi_fixedip</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">fixed_ip:\s(\d+.\d+.\d+.\d+)\s</regex>
+    <order>unifi_fixedip_ip</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIsettingsChanges=name:\s(.*?);</regex>
+    <order>unifi_settings_name</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIapplicationVersion=(.*?)\s</regex>
+    <order>unifi_updated_application_version</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIapplicationPriorVersion=(.*?)\s</regex>
+    <order>unifi_prior_application_version</order>
+</decoder>
+
+<decoder name="unifi_event_type">
+    <parent>unifi_event</parent>
+    <regex offset="after_parent" type="pcre2">UNIFIdeviceList=(.*?)\scnt=</regex>
+    <order>unifi_device_list</order>
 </decoder>
