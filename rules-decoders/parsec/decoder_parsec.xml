@@ -1,0 +1,8 @@
+ <decoder name="parsed_login">
+    <prematch>\[I\s\d+-\d+-\d+\s\d+:\d+:\d+\]\s\S+#\d+\sconnected.</prematch>
+</decoder>
+<decoder name="parsed_login_id_decoder">
+    <parent>parsed_login</parent>
+     <regex type="pcre2">(\S+)#(\d+)\sconnected.</regex>
+    <order>remote_name,remote_id</order>
+</decoder>

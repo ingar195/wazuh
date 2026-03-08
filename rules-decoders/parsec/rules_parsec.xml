@@ -1,0 +1,10 @@
+<group name="parsec,">
+
+    <rule id="223121" level="8">
+        <decoded_as>parsed_login</decoded_as>
+        <field name="remote_id" type="pcre2">(.*?)</field>
+        <field name="remote_name" type="pcre2">(.*?)</field>
+        <description>Parsec: Connection from $(remote_name)</description>
+    </rule>
+
+</group>
