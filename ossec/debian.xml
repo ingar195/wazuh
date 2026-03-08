@@ -1,9 +1,13 @@
-<agent_config>
+  <agent_config>
     <localfile>
-      <location>/opt/docker/*/data/logs/*.log</location>
-      <log_format>syslog</log_format>
+        <location>/opt/docker/*/data/logs/*.log</location>
+        <log_format>syslog</log_format>
     </localfile>
     <syscheck>
         <directories report_changes="yes" whodata="yes">/etc/ufw/</directories>
     </syscheck>
+    <localfile>
+        <log_format>syslog</log_format>
+        <location>/var/log/ufw.log</location>
+    </localfile>
 </agent_config>
