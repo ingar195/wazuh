@@ -114,11 +114,14 @@
     
     <!-- Unifi -->
     <!-- THIS IS IN DEVELOPMENT-->
-    <rule_id>222301,222311,222312</rule_id> 
+    <rule_id>222301,222311,222312,222341,222345,222351</rule_id> 
     <!--
       222301 Portforward changed
       222311 FW rule changed
       222312 Devices offline
+      222341 Admin access
+      222345 Fixed ip changed
+      222351 update 
     -->
   </integration>
 ```

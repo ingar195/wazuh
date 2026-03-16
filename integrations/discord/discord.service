@@ -1,0 +1,15 @@
+[Unit]
+Description=Run Custom Discord Integration for Wazuh
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+# The '-' before the path means systemd will ignore a non-zero exit code if the sleep fails
+ExecStartPre=/usr/bin/sleep 30
+# Removed -it because there is no TTY in a background service
+ExecStart=/usr/bin/docker exec single-node-wazuh.manager-1 /var/ossec/integrations/custom-discord
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

@@ -4,7 +4,7 @@
 </decoder>
 
 <decoder name="unifi_event">
-    <prematch type="pcre2">CEF:\d+\|Ubiquiti\|UniFi Network\|</prematch>
+    <prematch type="pcre2">\|Ubiquiti\|UniFi Network\|</prematch>
 </decoder>
 
 <decoder name="unifi_event_type">
