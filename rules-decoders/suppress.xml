@@ -4,4 +4,9 @@
     <field name="command" type="pcre2">usbip</field>
     <description>Suppress any sudo command containing usbip</description>
   </rule>
+  <rule id="222556" level="0">
+    <if_sid>5402, 5403</if_sid>
+    <field name="command" type="pcre2">\.*/home/user/.ansible/tmp/ansible\.*</field>
+    <description>Suppress any sudo command containing Ansible temporary files</description>
+  </rule>
 </group>
